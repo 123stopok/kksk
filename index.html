@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>戒烟新闻公益互动H5</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="text-center">
+  <div class="bg-backdrop"></div>
+
+<!-- ====================== 【仅新增】动态背景容器 ====================== -->
+<div class="icon-grid" id="iconGrid"></div>
+
+  
+  <div class="mask show" id="musicMask"></div>
+  <div class="modal show" id="musicModal">
+    <h2 class="text-green-500 text-2xl font-bold mb-4">背景音乐 🎵</h2>
+    <p class="text-gray-600 mb-6">是否播放舒缓背景音乐，陪伴您完成戒烟互动？</p>
+    <div class="flex gap-4">
+      <button onclick="playMusic()" class="bg-green-500 text-white px-6 py-3 rounded-lg font-medium flex-1">播放</button>
+      <button onclick="closeMusicModal()" class="bg-gray-300 text-gray-700 px-6 py-3 rounded-lg font-medium flex-1">不播放</button>
+    </div>
+  </div>
+
+  
+  <div class="mask" id="mask"></div>
+  <div class="modal" id="modal">
+    <h2 class="text-red-500 text-2xl font-bold mb-6">回答错误 ❌</h2>
+    <p class="text-gray-600 mb-8 text-lg" id="modalText"></p>
+    <button onclick="closeModal()" class="bg-green-500 text-white px-10 py-4 rounded-lg font-medium w-full text-lg">查看知识点</button>
+  </div>
+
+<div class="page active" id="page-2">
+  <div class="fade-in-up news-card">
+    <div class="news-date">公益新闻 · 吸烟危害报道</div>
+    <h3 class="news-title">权威发布：我国每年超100万人死于烟草相关疾病</h3>
+    <p class="news-text">国家卫生健康委报告明确指出：吸烟可直接导致肺癌、慢阻肺、冠心病、脑中风等多种致命疾病。</p>
+    <p class="news-text"><span class="news-red">二手烟、三手烟</span>没有任何安全剂量，会严重危害孩子、孕妇、老人的健康，我国每年有超10万非吸烟者因二手烟死亡。</p>
+    <p class="news-text">烟草燃烧产生<span class="news-red">7000多种化学物质、数百种有害物质、69种一类致癌物</span>，哪怕只吸一口，都会对身体造成不可逆伤害。</p>
+    
+    <!-- 新增图片（不影响任何功能） -->
+    <div class="my-4">
+      <img src="屏幕截图 2026-04-14 200344.png" class="w-full h-auto rounded-xl shadow-md" alt="吸烟危害健康">
+    </div>
+
+    <p class="news-text font-bold text-red-600">【专家评论】</p>
+    <p class="news-text">吸烟是中国人健康的第一大杀手，戒烟是降低疾病风险、延长寿命最有效的方式，没有之一。</p>
+
+    <div class="arrow-tip" onclick="nextPage()">下一页 ↓</div>
+  </div>
+</div>
+
+<div class="page" id="page-1">
+  <div class="fade-in-up news-card">
+    <div class="news-date">公益新闻 · 吸烟危害报道</div>
+    <h3 class="news-title">青少年吸烟危害加倍，低龄化趋势令人担忧</h3>
+    <p class="news-text">青少年心肺、大脑都未发育成熟，吸烟会<span class="news-red">永久损伤智力、记忆力、心肺功能</span>，影响一生健康。</p>
+    <p class="news-text">越早吸烟，成瘾性越强，未来患癌风险是普通人的3倍以上，戒烟难度也会大幅增加。</p>
+    <p class="news-text">调查显示：超过80%的成年烟民，都是在青少年时期就开始接触香烟。</p>
+    
+    <!-- 新增视频（B站嵌入） -->
+    <div class="my-4">
+      <div class="relative w-full overflow-hidden rounded-xl shadow-md" style="padding-top:56.25%;">
+        <iframe class="absolute inset-0 w-full h-full" src="https://player.bilibili.com/player.html?bvid=BV1XL411t7pt&page=1&autoplay=0" scrolling="no" border="0" frameborder="0" allowfullscreen allow="fullscreen; picture-in-picture"></iframe>
+      </div>
+      <p class="text-sm text-gray-500 mt-2">视频来源：B站 · <a href="https://www.bilibili.com/video/BV1XL411t7pt/?spm_id_from=333.1391.0.0" target="_blank" rel="noopener noreferrer" class="text-green-600">点击打开原视频</a></p>
+    </div>
+
+    <p class="news-text font-bold text-red-600">【教育评论】</p>
+    <p class="news-text">保护青少年远离烟草，就是保护国家的未来，家庭、学校、社会必须共同行动。</p>
+
+    <div class="arrow-tip" onclick="nextPage()">下一页 ↓</div>
+  </div>
+</div>
+
+<div class="page" id="page0">
+  <div class="fade-in-up news-card">
+    <div class="news-date">公益新闻 · 吸烟危害报道</div>
+    <h3 class="news-title">全国控烟升级：公共场所全面禁烟，保护全民健康</h3>
+    <p class="news-text">全国200多座城市已实施最严禁烟令，室内公共场所、工作场所、公共交通工具全面禁烟。</p>
+    <p class="news-text">控烟政策实施后，<span class="news-red">儿童呼吸道疾病大幅下降、市民健康水平提升、人均寿命明显延长</span>。</p>
+    <p class="news-text">戒烟不是个人选择，而是对自己、对家人、对社会最负责任的健康行动。</p>
+    
+    <!-- 新增图片 -->
+    <div class="my-4">
+      <img src="屏幕截图 2026-04-14 200439.png" class="w-full h-auto rounded-xl shadow-md" alt="无烟中国公益宣传">
+    </div>
+
+    <p class="news-text font-bold text-red-600">【社会评论】</p>
+    <p class="news-text">无烟环境让每个人都能自由呼吸，戒烟，正在成为一种健康、文明、受尊重的生活方式。</p>
+
+    <div class="arrow-tip" onclick="nextPage()">进入戒烟公益宣传 ↓</div>
+  </div>
+</div>
+
+  <div class="page" id="page1">
+    <div class="fade-in-up max-w-lg mx-auto">
+      <h1 class="text-[clamp(2.5rem,8vw,4rem)] font-bold text-gray-900 mb-6">为了自己与家人<br>开始戒烟吧</h1>
+      <p class="text-gray-500 text-xl mb-10">每一次拒绝香烟，都是向健康靠近</p>
+      <div class="page1-images">
+        <img src="f00e3360ca0bd6f65002dd45afa1d6fbcb1e3b1c.jpg" alt="戒烟宣传图1">
+        <img src="屏幕截图 2026-04-08 190938.png" alt="戒烟宣传图2">
+        <img src="屏幕截图 2026-04-08 191351.png" alt="戒烟宣传图3">
+      </div>
+      <div class="arrow-tip text-gray-700 mt-10" onclick="nextPage()">点击开始 ↓</div>
+    </div>
+  </div>
+
+  
+  <div class="page" id="page2">
+    <div class="fade-in-up max-w-full md:max-w-6xl mx-auto">
+      <h2 class="text-[clamp(1.8rem,6vw,2.5rem)] font-bold text-gray-900 mb-8">你是否被这些困扰？</h2>
+     <div class="grid grid-cols-2 md:grid-cols-4 gap-6 mb-10">
+  <div class="problem-card"><img src="1F72B24F5B94681EF520473B7B9ADA26.png" alt="晨起咳嗽"><p>晨起咳嗽不止，喉咙干痛</p></div>
+  <div class="problem-card"><img src="ED592361C0DE302629DA03BE25583548.png" alt="烟味"><p>身上烟味浓重，家人反感</p></div>
+  <div class="problem-card"><img src="4F73B6FABA7B3075D9E1F2E0DB68A25C.png" alt="体力"><p>体力下降，爬楼气喘</p></div>
+  <div class="problem-card"><img src="17E169F2F3CDE245657E6ED31DAF290C.png" alt="牙齿"><p>牙齿发黄，口臭明显</p></div>
+</div>
+      <div class="arrow-tip text-gray-700" onclick="nextPage()">继续了解 ↓</div>
+    </div>
+  </div>
+
+  
+  <div class="page" id="page3">
+    <div class="fade-in-up max-w-lg mx-auto quiz-card">
+      <h2 class="text-[clamp(2rem,6vw,2.5rem)] font-bold mb-4">答题挑战 1/4</h2>
+      <p class="text-gray-600 text-xl mb-12">吸烟最主要的致癌物质是？</p>
+      <div class="flex flex-col items-center">
+        <div class="answer-box" onclick="check(3,1)">一氧化碳</div>
+        <div class="answer-box" onclick="check(3,2)">尼古丁</div>
+        <div class="answer-box" onclick="check(3,3)">焦油</div>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="page" id="page4">
+    <div class="fade-in-up max-w-lg mx-auto">
+      <h2 class="text-[clamp(1.8rem,6vw,2.5rem)] font-bold mb-8">香烟的隐藏危害</h2>
+      <div class="rounded-2xl overflow-hidden mb-7 shadow-lg border-2 border-white/30">
+        <div class="relative w-full overflow-hidden" style="padding-top:56.25%;">
+          <iframe class="absolute inset-0 w-full h-full" src="https://player.bilibili.com/player.html?bvid=BV1XC4y1m7Xd&page=1&autoplay=0" scrolling="no" border="0" frameborder="0" allowfullscreen allow="fullscreen; picture-in-picture"></iframe>
+        </div>
+        <div class="bg-white/40 px-6 py-3 text-base text-gray-700 border-t">🎥 香烟危害科普短片 · <a href="https://www.bilibili.com/video/BV1XC4y1m7Xd/?spm_id_from=333.337.search-card.all.click" target="_blank" rel="noopener noreferrer" class="text-green-600">点击原视频</a></div>
+      </div>
+      <div class="border-2 border-gray-200 rounded-xl p-8 text-left bg-white/70 backdrop-blur-sm text-lg">
+        <p class="mb-4">🔥 焦油：强致癌物，损伤肺部细胞</p>
+        <p class="mb-4">🔥 尼古丁：高度成瘾，损伤血管</p>
+        <p class="mb-4">🔥 一氧化碳：降低血液含氧量</p>
+        <p>🔥 二手烟/三手烟：严重危害家人健康</p>
+      </div>
+      <div class="arrow-tip" onclick="nextPage()">继续答题 ↓</div>
+    </div>
+  </div>
+
+ 
+  <div class="page" id="page5">
+    <div class="fade-in-up max-w-lg mx-auto quiz-card">
+      <h2 class="text-[clamp(2rem,6vw,2.5rem)] font-bold mb-4">答题挑战 2/4</h2>
+      <p class="text-gray-600 text-xl mb-12">戒烟20分钟后，身体会发生什么？</p>
+      <div class="flex flex-col items-center">
+        <div class="answer-box" onclick="check(5,1)">血压心率恢复正常</div>
+        <div class="answer-box" onclick="check(5,2)">肺部完全修复</div>
+        <div class="answer-box" onclick="check(5,3)">味觉完全恢复</div>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="page" id="page6">
+    <div class="fade-in-up max-w-4xl mx-auto">
+      <h2 class="text-[clamp(1.8rem,6vw,2.5rem)] font-bold mb-8 text-center">戒烟后的身体变化</h2>
+      
+      
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 border-2 border-gray-200 rounded-xl p-8 bg-white/70 backdrop-blur-sm">
+        
+        
+        <div class="flex flex-col items-center text-center p-4">
+          <img src="Image_1776156477020_408_1776156519807edit.JPG" alt="血压心率恢复" class="w-full max-w-64 h-auto rounded-lg mb-4 object-cover">
+          <p class="text-lg font-medium">🕐 20分钟<br>血压、心率恢复正常</p>
+        </div>
+
+        
+        <div class="flex flex-col items-center text-center p-4">
+          <img src="Image_1776156478178_126_1776156513714edit.JPG" alt="心脏病风险降低" class="w-full max-w-64 h-auto rounded-lg mb-4 object-cover">
+          <p class="text-lg font-medium">🕑 24小时<br>心脏病风险降低</p>
+        </div>
+
+        
+        <div class="flex flex-col items-center text-center p-4">
+          <img src="Image_1776156479335_699_1776156504761edit.JPG" alt="肺功能改善" class="w-full max-w-64 h-auto rounded-lg mb-4 object-cover">
+          <p class="text-lg font-medium">🕒 3个月<br>循环系统、肺功能改善</p>
+        </div>
+
+        
+        <div class="flex flex-col items-center text-center p-4">
+          <img src="Image_1776156480413_542_1776156490124edit.JPG" alt="冠心病风险减半" class="w-full max-w-64 h-auto rounded-lg mb-4 object-cover">
+          <p class="text-lg font-medium">🕓 1年<br>冠心病风险减半</p>
+        </div>
+      </div>
+      
+      <div class="arrow-tip mt-8" onclick="nextPage()">继续答题 ↓</div>
+    </div>
+  </div>
+
+  
+  <div class="page" id="page7">
+    <div class="fade-in-up max-w-lg mx-auto quiz-card">
+      <h2 class="text-[clamp(2rem,6vw,2.5rem)] font-bold mb-4">答题挑战 3/4</h2>
+      <p class="text-gray-600 text-xl mb-12">戒烟第一步最应该做什么？</p>
+      <div class="flex flex-col items-center">
+        <div class="answer-box" onclick="check(7,1)">减少吸烟量</div>
+        <div class="answer-box" onclick="check(7,2)">丢掉所有香烟</div>
+        <div class="answer-box" onclick="check(7,3)">吃零食代替</div>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="page" id="page8">
+    <div class="fade-in-up max-w-lg mx-auto">
+      <h2 class="text-[clamp(1.8rem,6vw,2.5rem)] font-bold mb-6 text-gray-800 flex items-center gap-3">
+        <span>3步轻松戒烟</span><span class="text-3xl">🚭</span>
+      </h2>
+      <div class="rounded-2xl overflow-hidden mb-7 shadow-lg border-2 border-white/30">
+        <div class="relative w-full overflow-hidden" style="padding-top:56.25%;">
+          <iframe class="absolute inset-0 w-full h-full" src="https://player.bilibili.com/player.html?bvid=BV1Ab411K7ir&page=1&autoplay=0" scrolling="no" border="0" frameborder="0" allowfullscreen allow="fullscreen; picture-in-picture"></iframe>
+        </div>
+        <div class="bg-white/40 px-6 py-3 text-base text-gray-700 border-t">🎥 网红戒烟动力短片 · <a href="https://www.bilibili.com/video/BV1Ab411K7ir/?spm_id_from=333.337.search-card.all.click&vd_source=974c1dcdc81d821b6982304983adf464" target="_blank" rel="noopener noreferrer" class="text-green-600">点击原视频</a></div>
+      </div>
+      <div class="border-2 border-gray-200/70 rounded-xl p-7 text-left bg-white/70 backdrop-blur-sm shadow-lg">
+        <p class="text-base text-gray-500 mb-4">👇 点击每一步查看详细行动建议</p>
+        <div class="step-item px-4 py-3 mb-2" onclick="toggleDetail('step1')">
+          <p class="font-medium flex items-start gap-3 text-lg"><span class="text-2xl">✅</span><span>第一步：丢弃所有香烟、打火机，断绝源头</span><span id="step1-chevron" class="text-gray-400">▼</span></p>
+        </div>
+        <div id="step1-detail" class="step-detail-panel hidden">
+          <p class="flex gap-3 text-base">🗑️ 把烟、打火机、烟灰缸全部扔掉</p>
+          <p class="flex gap-3 mt-2 text-base">🧹 清理所有烟草痕迹</p>
+        </div>
+        <div class="step-item px-4 py-3 mb-2" onclick="toggleDetail('step2')">
+          <p class="font-medium flex items-start gap-3 text-lg"><span class="text-2xl">✅</span><span>第二步：告知亲友，寻求监督与支持</span><span id="step2-chevron" class="text-gray-400">▼</span></p>
+        </div>
+        <div id="step2-detail" class="step-detail-panel hidden">
+          <p class="flex gap-3 text-base">📢 宣布戒烟，寻求监督</p>
+          <p class="flex gap-3 mt-2 text-base">🤝 寻找戒烟伙伴互相鼓励</p>
+        </div>
+        <div class="step-item px-4 py-3" onclick="toggleDetail('step3')">
+          <p class="font-medium flex items-start gap-3 text-lg"><span class="text-2xl">✅</span><span>第三步：设定戒烟日，坚定执行不妥协</span><span id="step3-chevron" class="text-gray-400">▼</span></p>
+        </div>
+        <div id="step3-detail" class="step-detail-panel hidden">
+          <p class="flex gap-3 text-base">📅 选定戒烟日，严格执行</p>
+          <p class="flex gap-3 mt-2 text-base">⏳ 烟瘾发作坚持忍耐</p>
+        </div>
+        <div class="mt-7 pt-3 border-t flex justify-between gap-3">
+          <button onclick="showSmallTip()" class="text-sm bg-white/40 px-5 py-2 rounded-full">💡 小贴士</button>
+          <button onclick="showRandomTip()" class="text-sm bg-white/40 px-5 py-2 rounded-full">💬 随机鼓励</button>
+        </div>
+      </div>
+      <div class="arrow-tip" onclick="nextPage()">继续答题 ↓</div>
+    </div>
+  </div>
+
+  
+  <div class="page" id="page9">
+    <div class="fade-in-up max-w-lg mx-auto quiz-card">
+      <h2 class="text-[clamp(2rem,6vw,2.5rem)] font-bold mb-4">答题挑战 4/4</h2>
+      <p class="text-gray-600 text-xl mb-12">烟瘾发作时，错误的做法是？</p>
+      <div class="flex flex-col items-center">
+        <div class="answer-box" onclick="check(9,1)">喝水深呼吸</div>
+        <div class="answer-box" onclick="check(9,2)">立刻吸烟</div>
+        <div class="answer-box" onclick="check(9,3)">运动分散注意力</div>
+      </div>
+    </div>
+  </div>
+
+  
+  <div class="page" id="page10">
+    <div class="fade-in-up max-w-lg mx-auto">
+      <h2 class="text-[clamp(1.8rem,6vw,2.5rem)] font-bold mb-8">戒断反应应对技巧</h2>
+      <div class="border-2 border-gray-200 rounded-xl p-8 text-left bg-white/70 backdrop-blur-sm text-lg">
+        <p class="mb-4">💧 烟瘾发作：立刻喝一杯温水，缓慢深呼吸，放松全身，坚持熬过最强烈的5分钟，烟瘾会自然消退，绝不复吸。</p>
+        <p class="mb-4">🍎 嘴馋饥饿：准备黄瓜、小番茄、无糖口香糖等低热量健康零食，用咀嚼替代吸烟，缓解口腔空虚感与饥饿感。</p>
+        <p class="mb-4">🏃 烦躁焦虑：立刻起身散步、拉伸或做简单运动，让身体动起来，释放压力，快速平复烦躁情绪与吸烟冲动。</p>
+        <p>🧠 坚定信念：时刻提醒自己戒烟是为了健康与家人，回忆戒烟初衷，保持强大意志力，坚决抵制诱惑，绝不复吸。</p>
+      </div>
+      <div class="arrow-tip" onclick="nextPage()">最后一步 ↓</div>
+    </div>
+</div>
+
+  
+  <div class="page" id="page11">
+    <div class="fade-in-up max-w-lg mx-auto">
+      <h2 class="text-[clamp(1.8rem,6vw,2.5rem)] font-bold mb-8">他们都成功了，你也可以</h2>
+      <div class="border-2 border-gray-200 rounded-xl p-8 bg-white/70 backdrop-blur-sm">
+        <img src="屏幕截图_13-4-2026_225032_www.bilibili.com.jpg" class="rounded-xl w-full mb-6" alt="戒烟成功案例">
+        <p class="text-gray-600 text-lg">戒了的都留下了悔恨之泪。坚持21天，戒烟就能成为习惯！</p>
+      </div>
+      <div class="arrow-tip" onclick="nextPage()">许下承诺 ↓</div>
+    </div>
+  </div>
+
+  
+  <div class="page bg-gradient-to-br from-green-500 to-blue-500" id="page12">
+    <div class="fade-in-up max-w-lg mx-auto text-white">
+      <h2 class="text-[clamp(2rem,8vw,3rem)] font-bold mb-10">今天，就是戒烟的第一天</h2>
+      <button class="pulse-button bg-white text-green-600 px-16 py-6 rounded-full text-2xl font-bold shadow-lg" onclick="showEncouragement()">我承诺戒烟 🚭</button>
+      <p class="mt-10 text-xl text-white/90">为健康，为家人，加油！</p>
+    </div>
+  </div>
+
+  
+  <div id="tipToast" class="fixed bottom-10 left-1/2 -translate-x-1/2 bg-gray-800/80 text-white px-8 py-4 rounded-full text-base shadow-xl opacity-0 pointer-events-none z-50">提示信息</div>
+
+  
+  <audio id="bgMusic" src="戒烟.mp3" loop preload="metadata"></audio>
+  
+  <div class="music-control">
+    <button id="playPauseBtn" onclick="togglePlayPause()" class="w-10 h-10 rounded-full bg-green-500 flex items-center justify-center text-white">
+      <span id="playIcon">▶</span>
+    </button>
+    
+    <div class="music-name">戒烟-李XX</div>
+    
+    <input type="range" id="volumeSlider" min="0" max="1" step="0.1" value="0.7" oninput="adjustVolume(this.value)" class="w-24">
+    
+    <div id="audioWave" class="flex gap-1 hidden">
+      <div class="w-1.5 h-2 bg-green-500 rounded-full animate-wave"></div>
+      <div class="w-1.5 h-4 bg-green-500 rounded-full animate-wave" style="animation-delay:0.2s"></div>
+      <div class="w-1.5 h-6 bg-green-500 rounded-full animate-wave" style="animation-delay:0.4s"></div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
