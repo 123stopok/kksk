@@ -118,52 +118,68 @@
         font-size: 13px;
       }
       .page {
-        padding: 45px 10px 10px;
+        padding: 60px 10px 10px;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
       }
       .news-card,
       .quiz-card,
       .max-w-lg,
       .max-w-4xl,
       .max-w-full {
-        padding: 14px;
+        padding: 12px;
       }
       .page1-images img {
-        height: 90px;
+        height: 80px;
       }
       .page1-images {
-        gap: 8px;
+        gap: 6px;
       }
       .problem-card img {
-        height: 160px;
+        height: 140px;
       }
       .problem-card p {
-        padding: 12px 10px;
-        font-size: 0.9rem;
-        line-height: 1.4;
+        padding: 10px 8px;
+        font-size: 0.85rem;
+        line-height: 1.35;
       }
       .answer-box {
-        padding: 12px 14px;
-        font-size: 14px;
+        padding: 10px 12px;
+        font-size: 13px;
       }
       .arrow-tip {
-        font-size: 0.85rem;
-        padding: 0.6rem 1.2rem;
-        margin-top: 20px;
+        font-size: 0.8rem;
+        padding: 0.5rem 1.1rem;
+        margin-top: 18px;
       }
       .modal {
-        padding: 20px;
+        padding: 16px;
         min-width: 94vw;
       }
       h1,
       h2,
       h3 {
-        font-size: clamp(1.2rem, 5vw, 1.8rem);
+        font-size: clamp(1.1rem, 4.5vw, 1.6rem);
+      }
+      .news-title {
+        font-size: 16px;
+      }
+      .news-text {
+        font-size: 12px;
       }
     }
 
     img, iframe, video {
       max-width: 100%;
       height: auto;
+    }
+
+    /* 手机端滚动优化 */
+    @media (max-width: 768px) {
+      body {
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+      }
     }
   </style>
 </head>
