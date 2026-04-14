@@ -6,9 +6,9 @@
 }
 
 body {
-  overflow: hidden;
-  width: 100vw;
-  height: 100vh;
+  overflow-x: hidden;
+  max-width: 100%;
+  min-height: 100vh;
   background: #fcfcfc;
   position: relative;
   font-size: 18px;
@@ -34,6 +34,7 @@ body {
   align-items: center;
   justify-content: center;
   padding: 32px;
+  overflow-y: auto;
   opacity: 0;
   transform: translateY(60px);
   transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
@@ -194,10 +195,182 @@ body {
 }
 
 @media (max-width: 480px) {
-  .page1-images img { height: 130px; border-radius: 16px; }
-  .answer-box { width: 90vw; padding: 18px 20px; font-size: 17px; }
-  .modal { padding: 32px; min-width: 85vw; }
+  body {
+    font-size: 15px;
+  }
+  .page {
+    align-items: flex-start;
+    padding: 80px 16px 16px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .news-card,
+  .quiz-card,
+  .max-w-lg,
+  .max-w-4xl,
+  .max-w-full {
+    padding: 20px;
+  }
+  .page1-images img {
+    height: 110px;
+    border-radius: 16px;
+  }
+  .page1-images {
+    flex-direction: column;
+    gap: 12px;
+  }
+  .answer-box {
+    width: 100%;
+    max-width: 100%;
+    padding: 14px 16px;
+    font-size: 15px;
+  }
+  .arrow-tip {
+    font-size: 0.95rem;
+    padding: 0.7rem 1.6rem;
+    margin-top: 25px;
+  }
+  .modal {
+    padding: 24px;
+    min-width: 90vw;
+  }
+  .problem-card {
+    min-height: auto;
+  }
+  .problem-card p {
+    font-size: 0.95rem;
+  }
+  .news-title {
+    font-size: 20px;
+  }
+  .news-text {
+    font-size: 14px;
+  }
 }
+
+@media (max-width: 420px) {
+  body {
+    font-size: 14px;
+  }
+  .page {
+    padding: 70px 12px 12px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .news-card,
+  .quiz-card,
+  .max-w-lg,
+  .max-w-4xl,
+  .max-w-full {
+    padding: 16px;
+  }
+  .page1-images img {
+    height: 95px;
+  }
+  .problem-card img {
+    height: 160px;
+  }
+  .problem-card p {
+    padding: 12px 10px;
+    font-size: 0.9rem;
+    line-height: 1.4;
+  }
+  .answer-box {
+    padding: 12px 14px;
+    font-size: 14px;
+  }
+  .arrow-tip {
+    font-size: 0.9rem;
+    padding: 0.6rem 1.3rem;
+    margin-top: 20px;
+  }
+  .modal {
+    padding: 20px;
+    min-width: 92vw;
+  }
+  .page1-images {
+    gap: 8px;
+  }
+  .news-title {
+    font-size: 18px;
+  }
+  .news-text {
+    font-size: 13px;
+  }
+}
+
+@media (max-width: 360px) {
+  body {
+    font-size: 13px;
+  }
+  .page {
+    padding: 60px 10px 10px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .news-card,
+  .quiz-card,
+  .max-w-lg,
+  .max-w-4xl,
+  .max-w-full {
+    padding: 12px;
+  }
+  .page1-images img {
+    height: 80px;
+  }
+  .page1-images {
+    gap: 6px;
+  }
+  .problem-card img {
+    height: 140px;
+  }
+  .problem-card p {
+    padding: 10px 8px;
+    font-size: 0.85rem;
+    line-height: 1.35;
+  }
+  .answer-box {
+    padding: 10px 12px;
+    font-size: 13px;
+  }
+  .arrow-tip {
+    font-size: 0.8rem;
+    padding: 0.5rem 1.1rem;
+    margin-top: 18px;
+  }
+  .modal {
+    padding: 16px;
+    min-width: 94vw;
+  }
+  h1,
+  h2,
+  h3 {
+    font-size: clamp(1.1rem, 4.5vw, 1.6rem);
+  }
+  .news-title {
+    font-size: 16px;
+  }
+  .news-text {
+    font-size: 12px;
+  }
+}
+
+img, iframe, video {
+  max-width: 100%;
+  height: auto;
+}
+
+/* 手机端滚动优化 */
+@media (max-width: 768px) {
+  body {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  .page {
+    overflow-y: visible;
+  }
+}
+
 
 .page1-images img:nth-child(1) { animation-delay: 0s; }
 .page1-images img:nth-child(2) { animation-delay: 1.2s; }

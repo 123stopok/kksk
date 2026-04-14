@@ -6,6 +6,166 @@
   <title>戒烟新闻公益互动H5</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="style.css">
+  <style>
+    /* 手机端适配样式 */
+    @media (max-width: 480px) {
+      body {
+        font-size: 15px;
+      }
+      .page {
+        align-items: flex-start;
+        padding: 80px 16px 16px;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      .news-card,
+      .quiz-card,
+      .max-w-lg,
+      .max-w-4xl,
+      .max-w-full {
+        padding: 20px;
+      }
+      .page1-images img {
+        height: 110px;
+        border-radius: 16px;
+      }
+      .page1-images {
+        flex-direction: column;
+        gap: 12px;
+      }
+      .answer-box {
+        width: 100%;
+        max-width: 100%;
+        padding: 14px 16px;
+        font-size: 15px;
+      }
+      .arrow-tip {
+        font-size: 0.95rem;
+        padding: 0.7rem 1.6rem;
+        margin-top: 25px;
+      }
+      .modal {
+        padding: 24px;
+        min-width: 90vw;
+      }
+      .problem-card {
+        min-height: auto;
+      }
+      .problem-card p {
+        font-size: 0.95rem;
+      }
+      .news-title {
+        font-size: 20px;
+      }
+      .news-text {
+        font-size: 14px;
+      }
+    }
+
+    @media (max-width: 420px) {
+      body {
+        font-size: 14px;
+      }
+      .page {
+        padding: 70px 12px 12px;
+        overflow-y: auto;
+        -webkit-overflow-scrolling: touch;
+      }
+      .news-card,
+      .quiz-card,
+      .max-w-lg,
+      .max-w-4xl,
+      .max-w-full {
+        padding: 16px;
+      }
+      .page1-images img {
+        height: 95px;
+      }
+      .problem-card img {
+        height: 160px;
+      }
+      .problem-card p {
+        padding: 12px 10px;
+        font-size: 0.9rem;
+        line-height: 1.4;
+      }
+      .answer-box {
+        padding: 12px 14px;
+        font-size: 14px;
+      }
+      .arrow-tip {
+        font-size: 0.9rem;
+        padding: 0.6rem 1.3rem;
+        margin-top: 20px;
+      }
+      .modal {
+        padding: 20px;
+        min-width: 92vw;
+      }
+      .page1-images {
+        gap: 8px;
+      }
+      .news-title {
+        font-size: 18px;
+      }
+      .news-text {
+        font-size: 13px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      body {
+        font-size: 13px;
+      }
+      .page {
+        padding: 45px 10px 10px;
+      }
+      .news-card,
+      .quiz-card,
+      .max-w-lg,
+      .max-w-4xl,
+      .max-w-full {
+        padding: 14px;
+      }
+      .page1-images img {
+        height: 90px;
+      }
+      .page1-images {
+        gap: 8px;
+      }
+      .problem-card img {
+        height: 160px;
+      }
+      .problem-card p {
+        padding: 12px 10px;
+        font-size: 0.9rem;
+        line-height: 1.4;
+      }
+      .answer-box {
+        padding: 12px 14px;
+        font-size: 14px;
+      }
+      .arrow-tip {
+        font-size: 0.85rem;
+        padding: 0.6rem 1.2rem;
+        margin-top: 20px;
+      }
+      .modal {
+        padding: 20px;
+        min-width: 94vw;
+      }
+      h1,
+      h2,
+      h3 {
+        font-size: clamp(1.2rem, 5vw, 1.8rem);
+      }
+    }
+
+    img, iframe, video {
+      max-width: 100%;
+      height: auto;
+    }
+  </style>
 </head>
 
 <body class="text-center">
